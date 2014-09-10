@@ -1,6 +1,6 @@
 <?php
 
-namespace sgdot\admin\components;
+namespace sgdot\widgets;
 
 use \yii\helpers\Html;
 use yii\helpers\Json;
