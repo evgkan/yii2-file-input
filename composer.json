@@ -1,0 +1,20 @@
+{
+    "name": "sgdot/yii2-file-input",
+    "description": "Yii2 file input",
+    "authors": [
+        {
+            "name": "Sergei Gulin",
+            "email": "gulin.sergi@ya.ru"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=5.4.0",
+        "mihaildev/yii2-elfinder": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "sgdot\\widgets\\": "src/"
+        }
+    }
+}
