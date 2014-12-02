@@ -61,7 +61,7 @@ class FormInputImages extends \mihaildev\elfinder\InputFile {
 
     public function registerJs() {
         AssetsCallBack::register($this->getView());
-        $js = "ElFinderFileCallback.register("
+        $js = "mihaildev.elFinder.register("
             . Json::encode($this->options['id'])
             . ", function(file, id){
                 \$('#' + id).val(file.url); return true;

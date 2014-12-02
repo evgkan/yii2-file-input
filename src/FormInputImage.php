@@ -30,7 +30,7 @@ class FormInputImage extends \mihaildev\elfinder\InputFile {
         $this->template = strtr($this->template, $replace);
 
         parent::run();
-        $this->getView()->registerJs("ElFinderFileCallback.register(" . Json::encode($this->options['id']) . ", function(file, id){ \$('#' + id).val(file.url); \$('#$previewId').html('<img class=\"form-img-preview\" src=\"'+file.url+'\">'); return true;}); ");
+        $this->getView()->registerJs("mihaildev.elFinder.register(" . Json::encode($this->options['id']) . ", function(file, id){ \$('#' + id).val(file.url); \$('#$previewId').html('<img class=\"form-img-preview\" src=\"'+file.url+'\">'); return true;}); ");
         $this->view->registerCss('.form-img-preview {max-width:100px;}');
     }
 
