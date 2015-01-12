@@ -67,13 +67,13 @@ class FormInputImages extends \mihaildev\elfinder\InputFile {
                 \$('#' + id).val(file.url); return true;
             });
             $('#" . $this->buttonOptions['id'] . "').click(function(){
-                ElFinderFileCallback.openManager("
+                mihaildev.elFinder.openManager("
             . Json::encode($this->_managerOptions)
             . ");});";
         $this->getView()->registerJs($js);
 
         $this->getView()->registerJs(
-            "ElFinderFileCallback.register("
+            "mihaildev.elFinder.register("
             . Json::encode($this->options['id'])
             . ", function(file, id){
                 var img = templateItem.replace('{src}', file.url).replace('{src}', file.url);
