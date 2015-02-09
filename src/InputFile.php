@@ -27,9 +27,9 @@ class InputFile extends \mihaildev\elfinder\InputFile {
         AssetsCallBack::register($this->getView());
 
         if (!empty($this->callbackFunction)) {
-            $this->getView()->registerJs("mihaildev.elFinder.register(" . Json::encode($this->options['id']) . "," . Json::encode($this->callbackFunction) . ");$('#" . $this->buttonOptions['id'] . "').click(function(){ElFinderFileCallback.openManager(" . Json::encode($this->_managerOptions) . ");});");
+            $this->getView()->registerJs("mihaildev.elFinder.register(" . Json::encode($this->options['id']) . "," . Json::encode($this->callbackFunction) . ");$('#" . $this->buttonOptions['id'] . "').click(function(){mihaildev.elFinder.openManager(" . Json::encode($this->_managerOptions) . ");});");
         } else {
-            $this->getView()->registerJs("mihaildev.elFinder.register(" . Json::encode($this->options['id']) . ", function(file, id){ \$('#' + id).val(file.url); return true;});$('#" . $this->buttonOptions['id'] . "').click(function(){ElFinderFileCallback.openManager(" . Json::encode($this->_managerOptions) . ");});");
+            $this->getView()->registerJs("mihaildev.elFinder.register(" . Json::encode($this->options['id']) . ", function(file, id){ \$('#' + id).val(file.url); return true;});$('#" . $this->buttonOptions['id'] . "').click(function(){mihaildev.elFinder.openManager(" . Json::encode($this->_managerOptions) . ");});");
         }
     }
 
