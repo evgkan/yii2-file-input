@@ -27,7 +27,7 @@ class FormInputImages extends \mihaildev\elfinder\InputFile {
         } elseif (is_array($src)) {
             $images = $this->renderImages($src);
             $preview = Html::tag('div', $images, [
-                    'id' => $this->previewId,
+                'id' => $this->previewId,
             ]);
         } else {
             throw new Exception('Ошибка');
@@ -37,6 +37,8 @@ class FormInputImages extends \mihaildev\elfinder\InputFile {
 
 
         $replace['{button}'] = Html::button($this->buttonName, $this->buttonOptions);
+        $name = Html::getInputName($this->model, $this->attribute);
+        echo Html::hiddenInput($name, '');
         echo strtr($this->template, $replace);
 
         $this->registerJs();
@@ -62,20 +64,20 @@ class FormInputImages extends \mihaildev\elfinder\InputFile {
     public function registerJs() {
         AssetsCallBack::register($this->getView());
         $js = "mihaildev.elFinder.register("
-            . Json::encode($this->options['id'])
-            . ", function(file, id){
+        . Json::encode($this->options['id'])
+        . ", function(file, id){
                 \$('#' + id).val(file.url); return true;
             });
             $('#" . $this->buttonOptions['id'] . "').click(function(){
                 mihaildev.elFinder.openManager("
-            . Json::encode($this->_managerOptions)
-            . ");});";
+        . Json::encode($this->_managerOptions)
+        . ");});";
         $this->getView()->registerJs($js);
 
         $this->getView()->registerJs(
-            "mihaildev.elFinder.register("
-            . Json::encode($this->options['id'])
-            . ", function(file, id){
+        "mihaildev.elFinder.register("
+        . Json::encode($this->options['id'])
+        . ", function(file, id){
                 var img = templateItem.replace('{src}', file.url).replace('{src}', file.url);
                 \$('#$this->previewId').append(img);
                 return true;}); ");
