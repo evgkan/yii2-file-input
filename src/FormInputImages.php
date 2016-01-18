@@ -79,14 +79,14 @@ class FormInputImages extends \mihaildev\elfinder\InputFile {
         . Json::encode($this->options['id'])
         . ", function(file, id){
                 var img;
-                if((typeof file == \"object\")){
+                if((\"url\" in file )){
+                    img = templateItem.replace('{src}', file.url).replace('{src}', file.url);
+                    \$('#$this->previewId').append(img);
+                } else {
                     file.forEach(function(item){
                         img = templateItem.replace('{src}', item.url).replace('{src}', item.url);
                         \$('#$this->previewId').append(img);
                     });
-                } else {
-                    img = templateItem.replace('{src}', file.url).replace('{src}', file.url);
-                    \$('#$this->previewId').append(img);
                 }
                 return true;}); ");
         $hiddenInput = Html::activeHiddenInput($this->model, $this->attribute . '[]', ['value' => '{src}']);
